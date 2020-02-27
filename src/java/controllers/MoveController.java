@@ -11,6 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.Cell;
+import services.MoveService;
 
 /**
  *
@@ -87,6 +89,15 @@ public class MoveController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int position = Integer.parseInt(request.getParameter("cell"));
+        String symbol = request.getParameter("symbol");
+        Cell cell = new Cell();
+        if(position == 0) {
+            cell.setX(0);
+            cell.setY(0);
+        }
+        MoveService service = new MoveService();
+        service.save(position, symbol);
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -99,6 +110,7 @@ public class MoveController extends HttpServlet {
             out.println("<h3>" + "Play your move" +  "</h3>");
             out.println("cell position:" + request.getParameter("cell"));
             out.println("symbol:" + request.getParameter("symbol"));
+            
             out.println("zdfsfdf");
             out.println("</body>");
             out.println("</html>");
