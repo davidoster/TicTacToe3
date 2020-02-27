@@ -99,6 +99,7 @@ public class MoveController extends HttpServlet {
             out.println("<h3>" + "Play your move" +  "</h3>");
             out.println("cell position:" + request.getParameter("cell"));
             out.println("symbol:" + request.getParameter("symbol"));
+            out.println("zdfsfdf");
             out.println("</body>");
             out.println("</html>");
             
